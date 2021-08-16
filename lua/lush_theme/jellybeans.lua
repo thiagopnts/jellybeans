@@ -16,8 +16,36 @@
 local lush = require("lush")
 local hsl = lush.hsl
 
-local background = hsl("#151515")
-local foreground = hsl("#e8e8d3")
+local background = hsl(0, 0, 8)
+local foreground = hsl(60, 31, 87)
+local grey = hsl(0, 0, 20)
+local grey2 = hsl(0, 0, 25)
+local grey3 = hsl(0, 0, 53)
+local grey4 = hsl(288, 4, 25)
+local cadet_blue = hsl(210, 11, 72)
+local regent_grey = hsl(210, 8, 60)
+local silver = hsl(0, 0, 78)
+local alto = hsl(0, 0, 94)
+local morning_glory = hsl(203, 52, 71)
+local ship_cove = hsl(219, 33, 63)
+local hoki = hsl(201, 20, 50)
+local perano = hsl(210, 68, 82)
+local greenish = hsl(53, 53, 69)
+local mantis = hsl(102, 43, 52)
+local costa_del_sol = hsl(80, 33, 30)
+local green_smoke = hsl(78, 29, 55)
+local highland = hsl(102, 21, 52)
+local wewak = hsl(336, 73, 78)
+local cocoa_brown = hsl(330, 20, 16)
+local kindagreen = hsl(202, 47, 32)
+local raw_sienna = hsl(14, 58, 55)
+local goldenrod = hsl(40, 93, 73)
+local koromiko = hsl(33, 100, 70)
+local old_brick = hsl(0, 64, 35)
+local dark_blue = hsl(240, 100, 44)
+local casal = hsl(172, 43, 31)
+local biloba_flower = hsl(257, 62, 76)
+local ripe_plum = hsl(291, 100, 19)
 
 local theme =
   lush(
@@ -35,63 +63,64 @@ local theme =
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    -- Comment      { }, -- any comment
-    -- ColorColumn  { }, -- used for the columns set with 'colorcolumn'
-    -- Conceal      { }, -- placeholder characters substituted for concealed text (see 'conceallevel')
-    -- Cursor       { }, -- character under the cursor
+    IndentBlanklineChar {fg = grey},
+    Comment      { fg = grey, gui="italic" }, -- any comment
+    ColorColumn  { fg = background }, -- used for the columns set with 'colorcolumn'
+    Conceal      { fg = morning_glory }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Cursor       { fg = background, bg = morning_glory}, -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     -- CursorIM     { }, -- like Cursor, but used when in IME mode |CursorIM|
-    -- CursorColumn { }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    -- CursorLine   { }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
-    -- Directory    { }, -- directory names (and other special names in listings)
-    -- DiffAdd      { }, -- diff mode: Added line |diff.txt|
-    -- DiffChange   { }, -- diff mode: Changed line |diff.txt|
-    -- DiffDelete   { }, -- diff mode: Deleted line |diff.txt|
-    -- DiffText     { }, -- diff mode: Changed text within a changed line |diff.txt|
+    CursorColumn { fg = grey }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
+    CursorLine   { CursorColumn }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    Directory    { fg = greenish }, -- directory names (and other special names in listings)
+    DiffAdd      { fg = mantis }, -- diff mode: Added line |diff.txt|
+    DiffChange   { fg = kindagreen}, -- diff mode: Changed line |diff.txt|
+    DiffDelete   { fg = raw_sienna }, -- diff mode: Deleted line |diff.txt|
+    DiffText     { fg = morning_glory }, -- diff mode: Changed text within a changed line |diff.txt|
     -- EndOfBuffer  { }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     -- TermCursor   { }, -- cursor in a focused terminal
     -- TermCursorNC { }, -- cursor in an unfocused terminal
-    -- ErrorMsg     { }, -- error messages on the command line
-    -- VertSplit    { }, -- the column separating vertically split windows
+    ErrorMsg     { fg = raw_sienna }, -- error messages on the command line
+    VertSplit    { fg = grey }, -- the column separating vertically split windows
     -- Folded       { }, -- line used for closed folds
     -- FoldColumn   { }, -- 'foldcolumn'
-    -- SignColumn   { }, -- column where |signs| are displayed
-    -- IncSearch    { }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    SignColumn   { }, -- column where |signs| are displayed
+    IncSearch    { bg = goldenrod, fg = background }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     -- Substitute   { }, -- |:substitute| replacement text highlighting
-    -- LineNr       { }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    -- CursorLineNr { }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    -- MatchParen   { }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    LineNr       { fg = grey, bg = background}, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    CursorLineNr { fg = LineNr.fg.li(50), bg = LineNr.bg.li(5) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    MatchParen   { fg = goldenrod, bg = goldenrod.da(50) }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     -- ModeMsg      { }, -- 'showmode' message (e.g., "-- INSERT -- ")
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-    -- MoreMsg      { }, -- |more-prompt|
-    -- NonText      { }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    -- Normal       { }, -- normal text
-    -- NormalFloat  { }, -- Normal text in floating windows.
+    MoreMsg      { }, -- |more-prompt|
+    NonText      {fg = background }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Normal       { fg = foreground, bg = background }, -- normal text
+    NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    -- Pmenu        { }, -- Popup menu: normal item.
-    -- PmenuSel     { }, -- Popup menu: selected item.
+    Pmenu        { fg = foreground, bg = background.li(10) }, -- Popup menu: normal item.
+    PmenuSel     { fg = background.li(10), bg = goldenrod }, -- Popup menu: selected item.
     -- PmenuSbar    { }, -- Popup menu: scrollbar.
     -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
-    -- Question     { }, -- |hit-enter| prompt and yes/no questions
-    -- QuickFixLine { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    -- Search       { }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    -- SpecialKey   { }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    -- SpellBad     { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    -- SpellCap     { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    -- SpellLocal   { }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    -- SpellRare    { }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-    -- StatusLine   { }, -- status line of current window
-    -- StatusLineNC { }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-    -- TabLine      { }, -- tab pages line, not active tab page label
-    -- TabLineFill  { }, -- tab pages line, where there are no labels
-    -- TabLineSel   { }, -- tab pages line, active tab page label
-    -- Title        { }, -- titles for output from ":set all", ":autocmd" etc.
-    -- Visual       { }, -- Visual mode selection
+    Question     { fg = mantis }, -- |hit-enter| prompt and yes/no questions
+    QuickFixLine { bg = grey3 }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+    Search {fg = wewak, bg = cocoa_brown}, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    SpecialKey {fg = grey2, bg = grey3}, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+    SpellBad {bg = old_brick}, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellCap {bg = dark_blue}, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellLocal {bg = casal}, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+    SpellRare {bg = ripe_plum}, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+    StatusLine {fg = background, bg = alto}, -- status line of current window
+    StatusLineNC {fg = foreground, bg = grey4}, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    TabLine {fg = background, bg = cadet_blue}, -- tab pages line, not active tab page label
+    TabLineFill {fg = regent_grey}, -- tab pages line, where there are no labels
+    TabLineSel {fg = background, bg = alto}, -- tab pages line, active tab page label
+    Title {fg = mantis}, -- titles for output from ":set all", ":autocmd" etc.
+    Visual {bg = grey2}, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
-    -- WarningMsg   { }, -- warning messages
+    -- WarningMsg   {fg = goldenrod }, -- warning messages
     -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
-    -- WildMenu     { }, -- current match in 'wildmenu' completion
+    WildMenu {fg = wewak, bg = cocoa_brown}, -- current match in 'wildmenu' completion
 
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
@@ -99,39 +128,40 @@ local theme =
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    -- Constant       { }, -- (preferred) any constant
-    -- String         { }, --   a string constant: "this is a string"
+    Constant {fg = raw_sienna}, -- (preferred) any constant
+    String {fg = green_smoke}, --   a string constant: "this is a string"
+    StringDelimiter {fg = costa_del_sol},
     -- Character      { }, --  a character constant: 'c', '\n'
     -- Number         { }, --   a number constant: 234, 0xff
     -- Boolean        { }, --  a boolean constant: TRUE, false
     -- Float          { }, --    a floating point constant: 2.3e10
 
-    -- Identifier     { }, -- (preferred) any variable name
-    -- Function       { }, -- function name (also: methods for classes)
+    Identifier {fg = biloba_flower}, -- (preferred) any variable name
+    Function {fg = goldenrod}, -- function name (also: methods for classes)
 
-    -- Statement      { }, -- (preferred) any statement
+    Statement {fg = ship_cove}, -- (preferred) any statement
     -- Conditional    { }, --  if, then, else, endif, switch, etc.
     -- Repeat         { }, --   for, do, while, etc.
     -- Label          { }, --    case, default, etc.
-    -- Operator       { }, -- "sizeof", "+", "*", etc.
+    Operator {fg = morning_glory}, -- "sizeof", "+", "*", etc.
     -- Keyword        { }, --  any other keyword
     -- Exception      { }, --  try, catch, throw
 
-    -- PreProc        { }, -- (preferred) generic Preprocessor
+    PreProc        { fg = morning_glory }, -- (preferred) generic Preprocessor
     -- Include        { }, --  preprocessor #include
     -- Define         { }, --   preprocessor #define
     -- Macro          { }, --    same as Define
     -- PreCondit      { }, --  preprocessor #if, #else, #endif, etc.
 
-    -- Type           { }, -- (preferred) int, long, char, etc.
+    Type {fg = koromiko}, -- (preferred) int, long, char, etc.
     -- StorageClass   { }, -- static, register, volatile, etc.
-    -- Structure      { }, --  struct, union, enum, etc.
+    Structure {fg = morning_glory}, --  struct, union, enum, etc.
     -- Typedef        { }, --  A typedef
 
-    -- Special        { }, -- (preferred) any special symbol
+    Special        { fg = highland }, -- (preferred) any special symbol
     -- SpecialChar    { }, --  special character in a constant
     -- Tag            { }, --    you can use CTRL-] on this
-    -- Delimiter      { }, --  character that needs attention
+    Delimiter {fg = hoki}, --  character that needs attention
     -- SpecialComment { }, -- special things inside a comment
     -- Debug          { }, --    debugging statements
 
@@ -142,9 +172,9 @@ local theme =
     -- ("Ignore", below, may be invisible...)
     -- Ignore         { }, -- (preferred) left blank, hidden  |hl-Ignore|
 
-    -- Error          { }, -- (preferred) any erroneous construct
+    Error {bg = old_brick}, -- (preferred) any erroneous construct
 
-    -- Todo           { }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo {fg = silver}, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
@@ -153,19 +183,21 @@ local theme =
     -- LspReferenceText                     { }, -- used for highlighting "text" references
     -- LspReferenceRead                     { }, -- used for highlighting "read" references
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
+    --
+    FloatBorder { fg = grey3 },
 
     -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    -- LspDiagnosticsDefaultWarning         { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultWarning         { fg = goldenrod }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
-    -- LspDiagnosticsVirtualTextError       { }, -- Used for "Error" diagnostic virtual text
+    LspDiagnosticsVirtualTextError       { fg = old_brick }, -- Used for "Error" diagnostic virtual text
     -- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
     -- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
     -- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
 
     -- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
-    -- LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
+    LspDiagnosticsUnderlineWarning       { }, -- Used to underline "Warning" diagnostics
     -- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
     -- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
 
@@ -175,9 +207,9 @@ local theme =
     -- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
     -- LspDiagnosticsSignError              { }, -- Used for "Error" signs in sign column
-    -- LspDiagnosticsSignWarning            { }, -- Used for "Warning" signs in sign column
+    LspDiagnosticsSignWarning            {fg = goldenrod, bg = background}, -- Used for "Warning" signs in sign column
     -- LspDiagnosticsSignInformation        { }, -- Used for "Information" signs in sign column
-    -- LspDiagnosticsSignHint               { }, -- Used for "Hint" signs in sign column
+    LspDiagnosticsSignHint               {fg = green_smoke }, -- Used for "Hint" signs in sign column
 
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.
@@ -236,6 +268,63 @@ local theme =
     -- TSTitle              { };    -- Text that is part of a title.
     -- TSLiteral            { };    -- Literal text.
     -- TSURI                { };    -- Any URI like a link or email.
+
+    -- NvimTree
+--NvimTreeSymlink
+--NvimTreeEmptyFolderName
+--NvimTreeExecFile
+--NvimTreeOpenedFile
+--NvimTreeSpecialFile
+--NvimTreeImageFile
+--NvimTreeMarkdownFile
+--
+--LspDiagnosticsError
+--LspDiagnosticsWarning
+--LspDiagnosticsInformation
+--LspDiagnosticsHint
+--
+--NvimTreeLicenseIcon
+--NvimTreeYamlIcon
+--NvimTreeTomlIcon
+--NvimTreeGitignoreIcon
+--NvimTreeJsonIcon
+--
+--NvimTreeLuaIcon
+--NvimTreePythonIcon
+--NvimTreeShellIcon
+--NvimTreeJavascriptIcon
+--NvimTreeCIcon
+--NvimTreeReactIcon
+--NvimTreeHtmlIcon
+--NvimTreeRustIcon
+--NvimTreeVimIcon
+--NvimTreeTypescriptIcon
+--
+--NvimTreeGitStaged
+--NvimTreeGitMerge
+--NvimTreeGitRenamed
+--NvimTreeGitNew
+--NvimTreeGitDeleted
+--
+--There are also links to normal bindings to style the tree itself.
+
+    NvimTreeFileDirty { bg = background, fg = goldenrod },
+    NvimTreeFileStaged { NvimTreeFileDirty },
+    NvimTreeFileMerge { NvimTreeFileDirty },
+
+    NvimTreeFileRenamed { NvimTreeFileDirty },
+
+    NvimTreeFileNew { NvimTreeFileDirty },
+
+    NvimTreeFileDeleted { NvimTreeFileDirty },
+    NvimTreeFolderIcon {fg = biloba_flower},
+    NvimTreeFolderName {fg = perano},
+    NvimTreeOpenedFolderName {fg = biloba_flower},
+    NvimTreeIndentMarker {fg = biloba_flower},
+    NvimTreeVertSplit {fg = grey, bg = background},
+    NvimTreeRootFolder {fg = biloba_flower},
+    NvimTreeNormal {fg = perano},
+--    NvimTreeStatuslineNc {},
     }
   end
 )
