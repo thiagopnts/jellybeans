@@ -186,7 +186,7 @@ local theme =
     --
     FloatBorder { fg = grey3 },
 
-    -- LspDiagnosticsDefaultError           { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultError           { fg = old_brick }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultWarning         { fg = goldenrod }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     -- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
@@ -206,8 +206,8 @@ local theme =
     -- LspDiagnosticsFloatingInformation    { }, -- Used to color "Information" diagnostic messages in diagnostics float
     -- LspDiagnosticsFloatingHint           { }, -- Used to color "Hint" diagnostic messages in diagnostics float
 
-    -- LspDiagnosticsSignError              { }, -- Used for "Error" signs in sign column
-    LspDiagnosticsSignWarning            {fg = goldenrod, bg = background}, -- Used for "Warning" signs in sign column
+    LspDiagnosticsSignError              { LspDiagnosticsDefaultError }, -- Used for "Error" signs in sign column
+    LspDiagnosticsSignWarning            { fg = goldenrod, bg = background }, -- Used for "Warning" signs in sign column
     -- LspDiagnosticsSignInformation        { }, -- Used for "Information" signs in sign column
     LspDiagnosticsSignHint               {fg = green_smoke }, -- Used for "Hint" signs in sign column
 
@@ -268,6 +268,12 @@ local theme =
     -- TSTitle              { };    -- Text that is part of a title.
     -- TSLiteral            { };    -- Literal text.
     -- TSURI                { };    -- Any URI like a link or email.
+
+    -- Telescope
+    TelescopeBorder { fg = ship_cove },
+    TelescopeSelectionCaret { fg = biloba_flower},
+    TelescopeSelection { fg = ship_cove.da(50), bg = biloba_flower },
+    TelescopeMatching {TelescopeSelection},
 
     -- NvimTree
 --NvimTreeSymlink
