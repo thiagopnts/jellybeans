@@ -98,10 +98,11 @@ local theme =
     Normal       { fg = foreground, bg = background }, -- normal text
     NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
-    Pmenu        { fg = foreground, bg = background.li(10) }, -- Popup menu: normal item.
+    -- Preprocessor
+    Pmenu        { fg = goldenrod, bg = background.li(5) }, -- Popup menu: normal item.
     PmenuSel     { fg = background.li(10), bg = goldenrod }, -- Popup menu: selected item.
-    -- PmenuSbar    { }, -- Popup menu: scrollbar.
-    -- PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
+    PmenuSbar    { }, -- Popup menu: scrollbar.
+    PmenuThumb   { }, -- Popup menu: Thumb of the scrollbar.
     Question     { fg = mantis }, -- |hit-enter| prompt and yes/no questions
     QuickFixLine { bg = grey3 }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
     Search {fg = wewak, bg = cocoa_brown}, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
@@ -185,6 +186,7 @@ local theme =
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
     --
     FloatBorder { fg = grey3 },
+    LspFloatWinBorder { fg = grey3 },
 
     LspDiagnosticsDefaultError           { fg = old_brick }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
     LspDiagnosticsDefaultWarning         { fg = goldenrod }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
@@ -209,7 +211,7 @@ local theme =
     LspDiagnosticsSignError              { LspDiagnosticsDefaultError }, -- Used for "Error" signs in sign column
     LspDiagnosticsSignWarning            { fg = goldenrod, bg = background }, -- Used for "Warning" signs in sign column
     -- LspDiagnosticsSignInformation        { }, -- Used for "Information" signs in sign column
-    LspDiagnosticsSignHint               {fg = green_smoke }, -- Used for "Hint" signs in sign column
+    LspDiagnosticsSignHint               {fg = perano }, -- Used for "Hint" signs in sign column
 
     -- These groups are for the neovim tree-sitter highlights.
     -- As of writing, tree-sitter support is a WIP, group names may change.
@@ -270,10 +272,10 @@ local theme =
     -- TSURI                { };    -- Any URI like a link or email.
 
     -- Telescope
-    TelescopeBorder { fg = ship_cove },
+    TelescopeBorder { fg = koromiko },
     TelescopeSelectionCaret { fg = biloba_flower},
-    TelescopeSelection { fg = ship_cove.da(50), bg = biloba_flower },
-    TelescopeMatching {TelescopeSelection},
+    TelescopeSelection { fg = goldenrod },
+    TelescopeMatching { fg = raw_sienna },
 
     -- NvimTree
 --NvimTreeSymlink
@@ -314,22 +316,22 @@ local theme =
 --
 --There are also links to normal bindings to style the tree itself.
 
-    NvimTreeFileDirty { bg = background, fg = goldenrod },
-    NvimTreeFileStaged { NvimTreeFileDirty },
-    NvimTreeFileMerge { NvimTreeFileDirty },
+--    NvimTreeFileStaged { NvimTreeFileDirty },
+--    NvimTreeFileMerge { NvimTreeFileDirty },
 
-    NvimTreeFileRenamed { NvimTreeFileDirty },
+--    NvimTreeFileRenamed { NvimTreeFileDirty },
 
-    NvimTreeFileNew { NvimTreeFileDirty },
+--    NvimTreeFileNew { NvimTreeFileDirty },
 
-    NvimTreeFileDeleted { NvimTreeFileDirty },
-    NvimTreeFolderIcon {fg = biloba_flower},
-    NvimTreeFolderName {fg = perano},
-    NvimTreeOpenedFolderName {fg = biloba_flower},
-    NvimTreeIndentMarker {fg = biloba_flower},
+--    NvimTreeFileDeleted { NvimTreeFileDirty },
+    NvimTreeFolderIcon {fg = koromiko },
+    NvimTreeFolderName {fg = goldenrod},
+    NvimTreeOpenedFolderName {fg = koromiko },
+    NvimTreeIndentMarker {fg = perano },
     NvimTreeVertSplit {fg = grey, bg = background},
     NvimTreeRootFolder {fg = biloba_flower},
     NvimTreeNormal {fg = perano},
+    NvimTreeFileDirty {NvimTreeFolderIcon},
 --    NvimTreeStatuslineNc {},
     }
   end
