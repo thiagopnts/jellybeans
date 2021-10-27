@@ -63,9 +63,12 @@ local theme =
     -- styling for that group (meaning they mostly get styled as Normal)
     -- or leave them commented to apply vims default colouring or linking.
 
-    IndentBlanklineChar {fg = grey},
-    Comment      { fg = grey, gui="italic" }, -- any comment
-    ColorColumn  { fg = background }, -- used for the columns set with 'colorcolumn'
+    IndentBlanklineChar { fg = grey },
+    IndentBlanklineSpaceChar { fg = grey },
+    IndentBlanklineSpaceCharBlankline { fg = grey },
+    IndentBlanklineContextChar { fg = grey.li(10) },
+    Comment      { fg = grey.li(10), gui="italic" }, -- any comment
+    ColorColumn  { fg = background.li(15) }, -- used for the columns set with 'colorcolumn'
     Conceal      { fg = morning_glory }, -- placeholder characters substituted for concealed text (see 'conceallevel')
     Cursor       { fg = background, bg = morning_glory}, -- character under the cursor
     -- lCursor      { }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
@@ -94,7 +97,7 @@ local theme =
     -- MsgArea      { }, -- Area for messages and cmdline
     -- MsgSeparator { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg      { }, -- |more-prompt|
-    NonText      {fg = background }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    NonText      {fg = grey }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     Normal       { fg = foreground, bg = background }, -- normal text
     NormalFloat  { }, -- Normal text in floating windows.
     -- NormalNC     { }, -- normal text in non-current windows
@@ -120,8 +123,9 @@ local theme =
     Visual {bg = grey2}, -- Visual mode selection
     -- VisualNOS    { }, -- Visual mode selection when vim is "Not Owning the Selection".
     -- WarningMsg   {fg = goldenrod }, -- warning messages
-    -- Whitespace   { }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+    Whitespace   { fg = grey }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
     WildMenu {fg = wewak, bg = cocoa_brown}, -- current match in 'wildmenu' completion
+
 
     -- These groups are not listed as default vim groups,
     -- but they are defacto standard group names for syntax highlighting.
