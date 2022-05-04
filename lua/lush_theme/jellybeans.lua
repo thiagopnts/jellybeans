@@ -169,7 +169,7 @@ local theme = lush(function()
 		-- Debug          { }, --    debugging statements
 
 		Underlined { gui = "underline" }, -- (preferred) text that stands out, HTML links
-		Undercurled { gui = "undercurl" }, -- (preferred) text that stands out, HTML links
+--		Undercurled { gui = "undercurl", fg = "" }, -- (preferred) text that stands out, HTML links
 		-- Bold       { gui = "bold" },
 		-- Italic     { gui = "italic" },
 
@@ -191,17 +191,18 @@ local theme = lush(function()
 		FloatBorder({ fg = grey3 }),
 		LspFloatWinBorder({ fg = grey3 }),
 
-		LspDiagnosticsDefaultError({ fg = old_brick, guisp = old_brick, gui = "undercurl", term = "underline" }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		LspDiagnosticsDefaultError({ fg = "white", guisp = "white", gui = "undercurl", term = "underline" }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		LspDiagnosticsDefaultWarning({ fg = goldenrod, guisp = goldenrod, gui = "undercurl", term = "underline" }), -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		-- LspDiagnosticsDefaultInformation     { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 		-- LspDiagnosticsDefaultHint            { }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+		DiagnosticUnderlineError({ guisp = old_brick, gui = "undercurl", guifg = "red", fg = "red" }),
+		LspDiagnosticsUnderlineError({ DiagnosticUnderlineError }), -- Used to underline "Error" diagnostics
 
-		LspDiagnosticsVirtualTextError({ fg = old_brick }), -- Used for "Error" diagnostic virtual text
+		LspDiagnosticsVirtualTextError({ fg = "white" }), -- Used for "Error" diagnostic virtual text
 		-- LspDiagnosticsVirtualTextWarning     { }, -- Used for "Warning" diagnostic virtual text
 		-- LspDiagnosticsVirtualTextInformation { }, -- Used for "Information" diagnostic virtual text
 		-- LspDiagnosticsVirtualTextHint        { }, -- Used for "Hint" diagnostic virtual text
 
-		-- LspDiagnosticsUnderlineError         { }, -- Used to underline "Error" diagnostics
 		LspDiagnosticsUnderlineWarning({}), -- Used to underline "Warning" diagnostics
 		-- LspDiagnosticsUnderlineInformation   { }, -- Used to underline "Information" diagnostics
 		-- LspDiagnosticsUnderlineHint          { }, -- Used to underline "Hint" diagnostics
